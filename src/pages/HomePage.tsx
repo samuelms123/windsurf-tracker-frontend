@@ -3,8 +3,9 @@ import StatsGrid, { type HomeStat } from '../components/StatsGrid.tsx'
 import StravaSyncButton from '../components/StravaSyncButton.tsx'
 import NavigationBar from '../components/NavigationBar.tsx'
 import { useStravaSync } from '../hooks/useStravaSync.ts';
+import { useSummary } from '../hooks/useSummary.ts';
 
-const stats: HomeStat[] = [
+const loadingStats: HomeStat[] = [
     { label: 'Session Count', value: '0' },
     { label: 'Time Spent', value: '0h 0m' },
     { label: 'Time Spent Planing', value: '0h 0m' },
@@ -17,7 +18,8 @@ const stats: HomeStat[] = [
 
 function HomePage() {
     const { mutate, isPending, isSuccess } = useStravaSync();
-
+    const { data: liveStats} = useSummary();
+    const currentStats = liveStats ?? loadingStats;
 
     return (
         <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -28,7 +30,7 @@ function HomePage() {
                 />
 
 
-                <StatsGrid stats={stats} />
+                <StatsGrid stats={currentStats} />
             </section>
             <NavigationBar />
         </main>
