@@ -1,32 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSummary } from '../api/strava';
 import { type HomeStat } from '../components/StatsGrid';
-
-export type Summary = {
-  total_distance: number;
-  time_spent: number;
-  time_spent_planing: number;
-  total_session_count: number;
-  top_speed: number;
-  fastest_100: number;
-  fastest_500: number;
-  fastest_1000: number;
-};
-
-// TODO: Move to utils
-const formatDuration = (seconds: number): string => {
-  if (!seconds) return '0h 0m';
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  return `${hours}h ${minutes}m`;
-};
+import { type SummaryResponse } from '../types/api';
+import { formatDuration } from '../utils/helpers';
 
 
 export function useSummary() {
     return useQuery({
         queryKey: ['summary'],
         queryFn: getSummary,
-        select: (data: Summary): HomeStat[] => {
+        select: (data: SummaryResponse): HomeStat[] => {
       return [
         { label: 'Session Count', value: data.total_session_count.toString() },
         { label: 'Time Spent', value: formatDuration(data.time_spent) },
