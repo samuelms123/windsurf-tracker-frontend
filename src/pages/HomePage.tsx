@@ -18,7 +18,7 @@ const loadingStats: HomeStat[] = [
 
 function HomePage() {
     const { mutate, isPending, isSuccess } = useStravaSync();
-    const { data: liveStats} = useSummary();
+    const { data: liveStats } = useSummary();
     const currentStats = liveStats ?? loadingStats;
 
     return (
@@ -28,7 +28,6 @@ function HomePage() {
                     title="Summary"
                     action={<StravaSyncButton isLoading={isPending} isSuccess={isSuccess} onClick={() => mutate()} />}
                 />
-
 
                 <StatsGrid stats={currentStats} />
             </section>

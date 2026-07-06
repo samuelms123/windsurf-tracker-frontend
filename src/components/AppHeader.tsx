@@ -13,7 +13,6 @@ export default function AppHeader({ title, action }: HeaderProps) {
           {title}
         </h1>
         
-        {/* If an action component is passed down, render it here */}
         {action && <div>{action}</div>}
       </div>
     </header>
