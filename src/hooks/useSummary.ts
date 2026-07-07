@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSummary } from '../api/strava';
-import { type HomeStat } from '../components/StatsGrid';
+import { type SummaryStat } from '../components/StatsGrid';
 import { type SummaryResponse } from '../types/api';
 import { formatDuration } from '../utils/helpers';
 
@@ -9,7 +9,7 @@ export function useSummary() {
     return useQuery({
         queryKey: ['summary'],
         queryFn: getSummary,
-        select: (data: SummaryResponse): HomeStat[] => {
+        select: (data: SummaryResponse): SummaryStat[] => {
       return [
         { label: 'Session Count', value: data.total_session_count.toString() },
         { label: 'Time Spent', value: formatDuration(data.time_spent) },

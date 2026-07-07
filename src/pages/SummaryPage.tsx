@@ -1,11 +1,11 @@
 import AppHeader from '../components/AppHeader.tsx'
-import StatsGrid, { type HomeStat } from '../components/StatsGrid.tsx'
+import StatsGrid, { type SummaryStat } from '../components/StatsGrid.tsx'
 import StravaSyncButton from '../components/StravaSyncButton.tsx'
 import NavigationBar from '../components/NavigationBar.tsx'
 import { useStravaSync } from '../hooks/useStravaSync.ts';
 import { useSummary } from '../hooks/useSummary.ts';
 
-const loadingStats: HomeStat[] = [
+const loadingStats: SummaryStat[] = [
     { label: 'Session Count', value: '0' },
     { label: 'Time Spent', value: '0h 0m' },
     { label: 'Time Spent Planing', value: '0h 0m' },

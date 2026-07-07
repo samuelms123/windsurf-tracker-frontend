@@ -1,10 +1,10 @@
-export type HomeStat = {
+export type SummaryStat = {
   label: string
   value: string
 }
 
 type StatsGridProps = {
-  stats: HomeStat[]
+  stats: SummaryStat[]
 }
 
 function StatsGrid({ stats }: StatsGridProps) {

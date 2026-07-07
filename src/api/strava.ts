@@ -1,3 +1,6 @@
+import { type SummaryResponse } from '../types/api';
+import { type ActivitiesResponse } from '../types/api';
+
 const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
 
 export async function syncStravaData(): Promise<any> {
@@ -18,7 +21,7 @@ export async function syncStravaData(): Promise<any> {
   return res.json();
 }
 
-export async function getActivities(): Promise<any> {
+export async function getActivities(): Promise<ActivitiesResponse> {
     const apiKey = import.meta.env.VITE_HOME_LAB_API_KEY;
     const res = await fetch(`${API_BASE_URL}/activities`, {
         method: 'GET',
@@ -35,7 +38,7 @@ export async function getActivities(): Promise<any> {
     return res.json();
 }
 
-export async function getSummary(): Promise<any> {
+export async function getSummary(): Promise<SummaryResponse> {
     const apiKey = import.meta.env.VITE_HOME_LAB_API_KEY;
     const res = await fetch(`${API_BASE_URL}/activities/summary`, {
         method: 'GET',
