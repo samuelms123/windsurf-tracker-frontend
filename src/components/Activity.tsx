@@ -2,6 +2,7 @@
 import { useState, useId } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { type FormattedActivity } from '../hooks/useActivities';
+import ActivityItem from './ActivityItem';
 
 interface ActivityCardProps {
   activity: FormattedActivity;
@@ -20,11 +21,14 @@ export default function Activity({ activity }: ActivityCardProps) {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-white/5 focus:outline-none focus-visible:bg-white/5"
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors focus:outline-none focus-visible:bg-white/5"
       >
         <div className="min-w-0">
           <p className="text-sm font-medium text-slate-400">{activity.date}</p>
-          <p className="mt-1 truncate text-lg font-semibold tracking-tight text-white">{activity.place}</p>
+          <p className="mt-1 truncate text-lg font-semibold tracking-tight text-white">{activity.place_main}</p>
+          {activity.place_secondary && (
+            <p className="mt-1 truncate text-sm font-medium text-slate-400">{activity.place_secondary}</p>
+          )}
         </div>
 
         <ChevronDown
@@ -35,28 +39,21 @@ export default function Activity({ activity }: ActivityCardProps) {
 
       <div
         id={panelId}
-        role="region"
         aria-labelledby={triggerId}
         className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
-        <div className="min-h-0 border-t border-white/10 px-5 py-5">
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="min-h-0 border-t border-white/10">
+          <div className="grid gap-1 px-5 py-5 sm:grid-cols-2 lg:grid-cols-3">
 
-            // TODO: make into component
-            <div className="rounded-2xl border border-white/10 bg-slate-950/55 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Duration</p>
-              <p className="mt-2 text-base font-semibold text-white">{activity.duration}</p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-slate-950/55 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Distance</p>
-              <p className="mt-2 text-base font-semibold text-white">{activity.distance}</p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-slate-950/55 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Top Speed</p>
-              <p className="mt-2 text-base font-semibold text-white">{activity.maxSpeed}</p>
-            </div>
+            <ActivityItem label="Duration" value={activity.duration} />
+            <ActivityItem label="Distance" value={activity.distance} />
+            <ActivityItem label="Top Speed" value={activity.maxSpeed} />
+            <ActivityItem label="Average Speed" value={activity.averageSpeed} />
+            <ActivityItem label="Max Speed (5s)" value={activity.maxSpeed5s} />
+            <ActivityItem label="Max Speed (10s)" value={activity.maxSpeed10s} />
+            <ActivityItem label="Fastest 100m" value={activity.fastest100} />
+            <ActivityItem label="Fastest 500m" value={activity.fastest500} />
+            <ActivityItem label="Fastest 1000m" value={activity.fastest1000} />
 
           </div>
         </div>

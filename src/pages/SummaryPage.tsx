@@ -17,23 +17,31 @@ const loadingStats: SummaryStat[] = [
 ]
 
 function HomePage() {
-    const { mutate, isPending, isSuccess } = useStravaSync();
-    const { data: liveStats } = useSummary();
-    const currentStats = liveStats ?? loadingStats;
+  const { mutate, isPending, isSuccess } = useStravaSync();
+  const { data: liveStats } = useSummary();
+  const currentStats = liveStats ?? loadingStats;
 
-    return (
-        <main className="min-h-screen bg-slate-950 text-slate-100">
-            <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-start gap-6 px-6 pb-10 pt-4 sm:px-8 sm:pt-6 lg:px-12 lg:pt-8">
-                <AppHeader
-                    title="Summary"
-                    action={<StravaSyncButton isLoading={isPending} isSuccess={isSuccess} onClick={() => mutate()} />}
-                />
+  return (
+    <div className="flex h-screen w-full flex-col bg-slate-950 text-slate-100 overflow-hidden">
+      <AppHeader
+        title="Summary"
+        action={
+          <StravaSyncButton 
+            isLoading={isPending} 
+            isSuccess={isSuccess} 
+            onClick={() => mutate()} 
+          />
+        }
+      />
+      <main className="flex-1 overflow-y-auto px-6 pb-32 pt-6">
+        <div className="mx-auto w-full max-w-6xl">
+          <StatsGrid stats={currentStats} />
+        </div>
+      </main>
 
-                <StatsGrid stats={currentStats} />
-            </section>
-            <NavigationBar />
-        </main>
-    )
+      <NavigationBar />
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;

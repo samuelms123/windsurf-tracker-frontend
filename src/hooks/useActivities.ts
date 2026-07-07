@@ -5,7 +5,8 @@ import { formatDate, formatDuration } from '../utils/helpers';
 export interface FormattedActivity {
   id: string;
   date: string;
-  place: string;
+  place_main: string;
+  place_secondary?: string;
   duration: string;
   distance: string;
   averageSpeed: string;
@@ -22,6 +23,7 @@ export interface FormattedActivity {
     planing: string;
     blasting: string;
   };
+
 }
 
 
@@ -33,7 +35,9 @@ export function useActivities() {
       return rawActivities.map((activity) => ({
         id: activity.id,
         date: formatDate(activity.date),
-        place: [activity.start_location.city, activity.start_location.country].filter(Boolean).join(', ') || 'Unknown Location',
+        place_main: [activity.start_location.city, activity.start_location.country].filter(Boolean).join(', ') || 'Unknown Location',
+        place_secondary: [activity.start_location.suburb, activity.start_location.street].filter(Boolean).join(', ') || 'Unknown Location',
+
         duration: formatDuration(activity.elapsed_time),
         distance: activity.total_distance > 0 ? `${(activity.total_distance / 1000).toFixed(1)} km` : '0 km',
         averageSpeed: `${activity.average_speed.toFixed(1)} kn`,
@@ -50,7 +54,8 @@ export function useActivities() {
           planing: formatDuration(activity.speed_zones.planing),
           blasting: formatDuration(activity.speed_zones.blasting),
         }
-      }));
+      }
+      ));
     }
   });
 }

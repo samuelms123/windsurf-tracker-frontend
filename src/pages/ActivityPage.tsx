@@ -9,24 +9,21 @@ function ActivityPage() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
-      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-start gap-6 px-6 pb-10 pt-4 sm:px-8 sm:pt-6 lg:px-12 lg:pt-8">
-        <AppHeader
-          title="Activities"
-        />
-
-        <div className="grid gap-4">
-          {activities?.map((activity) => (
-            <Activity
-              key={activity.id}
-              activity={activity}
-            />
-          ))}
+    <div className="flex h-screen w-full flex-col bg-slate-950 text-slate-100 overflow-hidden">
+      <AppHeader title="Activities" />
+      <main className="flex-1 overflow-y-auto px-6 pb-24 pt-6">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="grid gap-4">
+            {activities?.map((activity) => (
+              <Activity key={activity.id} activity={activity} />
+            ))}
+          </div>
         </div>
-      </section>
+      </main>
+
       <NavigationBar />
-    </main>
-  )
+    </div>
+  );
 }
 
-export default ActivityPage
+export default ActivityPage;
