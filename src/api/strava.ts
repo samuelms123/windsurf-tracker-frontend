@@ -1,7 +1,7 @@
 import { type SummaryResponse } from '../types/api';
 import { type ActivitiesResponse } from '../types/api';
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function syncStravaData(): Promise<any> {
   const apiKey = import.meta.env.VITE_HOME_LAB_API_KEY;
