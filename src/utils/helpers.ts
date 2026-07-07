@@ -13,3 +13,11 @@ export const formatDate = (dateString: string): string => {
     day: 'numeric',
   });
 };
+
+export const msToKmh = (ms: number): number => {
+  return ms * 3.6;
+}
+
+export const msToKnots = (ms: number): number => {
+  return ms * 1.94384;
+}

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getActivities } from '../api/strava';
-import { formatDate, formatDuration } from '../utils/helpers';
+import { formatDate, formatDuration, msToKnots} from '../utils/helpers';
 
 export interface FormattedActivity {
   id: string;
@@ -32,7 +32,12 @@ export function useActivities() {
     queryKey: ['activities'],
     queryFn: getActivities,
     select: (rawActivities): FormattedActivity[] => {
-      return rawActivities.map((activity) => ({
+
+      const sortedRaw = [...rawActivities].sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      });
+
+      return sortedRaw.map((activity) => ({
         id: activity.id,
         date: formatDate(activity.date),
         place_main: [activity.start_location.city, activity.start_location.country].filter(Boolean).join(', ') || 'Unknown Location',
@@ -40,10 +45,10 @@ export function useActivities() {
 
         duration: formatDuration(activity.elapsed_time),
         distance: activity.total_distance > 0 ? `${(activity.total_distance / 1000).toFixed(1)} km` : '0 km',
-        averageSpeed: `${activity.average_speed.toFixed(1)} kn`,
-        maxSpeed: `${activity.max_speed.toFixed(1)} kn`,
-        maxSpeed5s: `${activity.max_speed_avg_5_s.toFixed(1)} kn`,
-        maxSpeed10s: `${activity.max_speed_avg_10_s.toFixed(1)} kn`,
+        averageSpeed: `${msToKnots(activity.average_speed).toFixed(1)} kn`,
+        maxSpeed: `${msToKnots(activity.max_speed).toFixed(1)} kn`,
+        maxSpeed5s: `${msToKnots(activity.max_speed_avg_5_s).toFixed(1)} kn`,
+        maxSpeed10s: `${msToKnots(activity.max_speed_avg_10_s).toFixed(1)} kn`,
         fastest100: activity.fastest_100 > 0 ? `${activity.fastest_100.toFixed(1)} s` : '--',
         fastest500: activity.fastest_500 > 0 ? `${activity.fastest_500.toFixed(1)} s` : '--',
         fastest1000: activity.fastest_1000 > 0 ? `${activity.fastest_1000.toFixed(1)} s` : '--',
