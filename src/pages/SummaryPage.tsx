@@ -4,6 +4,7 @@ import StravaSyncButton from '../components/StravaSyncButton.tsx'
 import NavigationBar from '../components/NavigationBar.tsx'
 import { useStravaSync } from '../hooks/useStravaSync.ts';
 import { useSummary } from '../hooks/useSummary.ts';
+import Loader from '../components/Loader.tsx';
 
 const loadingStats: SummaryStat[] = [
     { label: 'Session Count', value: '0' },
@@ -18,7 +19,7 @@ const loadingStats: SummaryStat[] = [
 
 function HomePage() {
   const { mutate, isPending, isSuccess } = useStravaSync();
-  const { data: liveStats } = useSummary();
+  const { data: liveStats, isPending: isSummaryPending } = useSummary();
   const currentStats = liveStats ?? loadingStats;
 
   return (
@@ -35,7 +36,7 @@ function HomePage() {
       />
       <main className="flex-1 overflow-y-auto px-6 pb-32 pt-6">
         <div className="mx-auto w-full max-w-6xl">
-          <StatsGrid stats={currentStats} />
+          {isSummaryPending ? <Loader /> : <StatsGrid stats={currentStats} />}
         </div>
       </main>
 
