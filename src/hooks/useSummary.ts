@@ -15,7 +15,7 @@ export function useSummary() {
         { label: 'Time Spent', value: formatDuration(data.time_spent) },
         { label: 'Time Planed', value: formatDuration(data.time_spent_planing) },
         { 
-          label: 'Distance Travelled', 
+          label: 'Total Distance', 
           value: data.total_distance > 0 ? `${(data.total_distance / 1000).toFixed(1)} km` : '0 km' 
         },
         { label: 'Top Speed', value: data.top_speed > 0 ? `${msToKnots(data.top_speed).toFixed(1)} kn` : '--' },

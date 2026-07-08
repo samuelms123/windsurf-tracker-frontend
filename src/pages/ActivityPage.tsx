@@ -10,7 +10,7 @@ function ActivityPage() {
   return (
     <div className="flex h-screen w-full flex-col bg-slate-950 text-slate-100 overflow-hidden">
       <AppHeader title="Activities" />
-      <main className="flex-1 overflow-y-auto px-6 pb-24 pt-6">
+      <main className="flex-1 overflow-y-scroll px-6 pb-24 pt-6">
         <div className="mx-auto w-full max-w-6xl">
           <div className="grid gap-4">
             {isLoading ? (
