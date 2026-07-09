@@ -7,7 +7,7 @@ Hosted on Vercel. [Windsurf-Tracker](https://windsurf-tracker-frontend.vercel.ap
 Currently only for personal use and requires dedicaded VPN connection, because the backend and database are hosted on my home lab servers.
 
 Please check out the project repositories here:
-* **Overview / Frontend:** [Windsurf-Tracker Overview](https://github.com/samuelms123/windsurf-tracker)
+* **Overview** [Windsurf-Tracker Overview](https://github.com/samuelms123/windsurf-tracker)
 * **Backend API:** [Windsurf-Tracker Backend](https://github.com/samuelms123/windsurf-tracker-backend)
 
 ## Front-End Technologies Used
