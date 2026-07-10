@@ -18,3 +18,13 @@ Please check out the project repositories here:
 * **[Tailwind CSS](https://tailwindcss.com/)**
 * **[Vite PWA Plugin](https://vite-pwa-org.netlify.app/)**
 * **[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)**
+
+## Screenshots
+
+<div align="center">
+  <img src="./screenshots/home.png" alt="Mobile Screenshot Summary Screen" width="320" style="border-radius: 24px;" >
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./screenshots/activities.png" alt="Mobile Screenshot Summary Screen" width="320" style="border-radius: 24px" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./screenshots/details.png" alt="Mobile Screenshot Summary Screen" width="320" style="border-radius: 24px;" />
+</div>
