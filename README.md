@@ -33,4 +33,8 @@ Please check out the project repositories here:
   <kbd>
     <img src="./screenshots/details.png" alt="Mobile Screenshot Details Screen" width="320" />
   </kbd>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <kbd>
+    <img src="./screenshots/blocked.png" alt="Mobile Screenshot Blocked Screen" width="320" />
+  </kbd>
 </div>
