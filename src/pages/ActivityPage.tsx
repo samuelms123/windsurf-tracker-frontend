@@ -12,7 +12,7 @@ function ActivityPage() {
       <AppHeader title="Activities" />
       <main className="flex-1 overflow-y-scroll px-6 pb-24 pt-8">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="grid gap-4">
+          <div className="grid gap-2">
             {isLoading ? (
               <Loader />
             ) : (
