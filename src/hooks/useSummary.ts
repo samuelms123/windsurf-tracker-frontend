@@ -23,7 +23,7 @@ export function useSummary() {
         { label: 'Top 100m', value: data.fastest_100 > 0 ? `${data.fastest_100.toFixed(1)} s` : '--' },
         { label: 'Top 500m', value: data.fastest_500 > 0 ? `${data.fastest_500.toFixed(1)} s` : '--' },
         { label: 'Top 1000m', value: data.fastest_1000 > 0 ? `${data.fastest_1000.toFixed(1)} s` : '--' },
-        { label: 'Top Nautica Mile', value: data.fastest_1852 > 0 ? `${data.fastest_1852.toFixed(1)} s` : '--' },
+        { label: 'Top Nautical Mile', value: data.fastest_1852 > 0 ? `${data.fastest_1852.toFixed(1)} s` : '--' },
       ];
     },
   });

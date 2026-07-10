@@ -34,7 +34,7 @@ function HomePage() {
           />
         }
       />
-      <main className="flex-1 overflow-y-scroll px-6 pb-24 pt-6">
+      <main className="flex-1 overflow-y-scroll px-6 pb-24 pt-8">
         <div className="mx-auto w-full max-w-6xl">
           {isSummaryPending ? <Loader /> : <StatsGrid stats={currentStats} />}
         </div>

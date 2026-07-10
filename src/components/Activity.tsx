@@ -1,8 +1,7 @@
-// src/components/Activity.tsx
 import { useState, useId } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { type FormattedActivity } from '../hooks/useActivities';
-import ActivityItem from './ActivityItem';
+import ActivitySection from './ActivitySection';
 
 interface ActivityCardProps {
   activity: FormattedActivity;
@@ -13,8 +12,27 @@ export default function Activity({ activity }: ActivityCardProps) {
   const panelId = useId();
   const triggerId = `${panelId}-trigger`;
 
+  const generalStats = [
+    { label: "Distance", value: activity.distance },
+    { label: "Duration", value: activity.duration },
+    { label: "Avg Speed", value: activity.averageSpeed },
+  ];
+
+  const speedStats = [
+    { label: "Peak", value: activity.maxSpeed, highlight: true },
+    { label: "Average 5s", value: activity.maxSpeed5s },
+    { label: "Average 10s", value: activity.maxSpeed10s },
+  ];
+
+  const runStats = [
+    { label: "100m", value: activity.fastest100 },
+    { label: "500m", value: activity.fastest500 },
+    { label: "1000m", value: activity.fastest1000 },
+    { label: "Nautical Mile", value: activity.fastest1852 },
+  ];
+
   return (
-    <article className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur">
+    <article className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl backdrop-blur">
       <button
         id={triggerId}
         type="button"
@@ -25,7 +43,7 @@ export default function Activity({ activity }: ActivityCardProps) {
       >
         <div className="min-w-0">
           <p className="text-sm font-medium text-slate-400">{activity.date}</p>
-          <p className="mt-1 truncate text-lg font-semibold tracking-tight text-white">{activity.place_main}</p>
+          <p className="mt-1 truncate text-base font-semibold tracking-tight text-white">{activity.place_main}</p>
           {activity.place_secondary && (
             <p className="mt-1 truncate text-sm font-medium text-slate-400">{activity.place_secondary}</p>
           )}
@@ -37,25 +55,27 @@ export default function Activity({ activity }: ActivityCardProps) {
         />
       </button>
 
-      <div
-        id={panelId}
-        aria-labelledby={triggerId}
-        className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-      >
-        <div className="min-h-0 border-t border-white/10">
-          <div className="grid gap-1 px-5 py-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div id={panelId} className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+        <div className="min-h-0 border-t border-white/5 bg-slate-950/40">
+          <div className="flex flex-col gap-2 p-3 text-xs">
 
-            <ActivityItem label="Duration" value={activity.duration} />
-            <ActivityItem label="Distance" value={activity.distance} />
-            <ActivityItem label="Average Speed" value={activity.averageSpeed} />
-            <ActivityItem label="Top Speed" value={activity.maxSpeed} />
-            <ActivityItem label="Top Speed (5s)" value={activity.maxSpeed5s} />
-            <ActivityItem label="Top Speed (10s)" value={activity.maxSpeed10s} />
-            <ActivityItem label="Top 100m" value={activity.fastest100} />
-            <ActivityItem label="Top 500m" value={activity.fastest500} />
-            <ActivityItem label="Top 1000m" value={activity.fastest1000} />
-            <ActivityItem label="Top Nautical Mile" value={activity.fastest1852} />
-            
+            <ActivitySection
+              title="General"
+              activities={generalStats}
+              titleColorClass="text-slate-400"
+            />
+
+            <ActivitySection
+              title="Speeds"
+              activities={speedStats}
+              titleColorClass="text-emerald-400/80"
+            />
+
+            <ActivitySection
+              title="Runs"
+              activities={runStats}
+              titleColorClass="text-blue-400"
+            />
 
           </div>
         </div>
