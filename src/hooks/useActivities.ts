@@ -16,6 +16,7 @@ export interface FormattedActivity {
   fastest100: string;
   fastest500: string;
   fastest1000: string;
+  fastest1852: string;
   speedZones: {
     idle: string;
     low: string;
@@ -52,6 +53,7 @@ export function useActivities() {
         fastest100: activity.fastest_100 > 0 ? `${activity.fastest_100.toFixed(1)} s` : '--',
         fastest500: activity.fastest_500 > 0 ? `${activity.fastest_500.toFixed(1)} s` : '--',
         fastest1000: activity.fastest_1000 > 0 ? `${activity.fastest_1000.toFixed(1)} s` : '--',
+        fastest1852: activity.fastest_1852 > 0 ? `${activity.fastest_1852.toFixed(1)} s` : '--',
         speedZones: {
           idle: formatDuration(activity.speed_zones.idle),
           low: formatDuration(activity.speed_zones.low),

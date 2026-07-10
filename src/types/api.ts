@@ -4,9 +4,11 @@ export interface SummaryResponse {
   time_spent_planing: number;
   total_session_count: number;
   top_speed: number;
+  top_speed_avg_5_s: number;
   fastest_100: number;
   fastest_500: number;
   fastest_1000: number;
+  fastest_1852: number;
 };
 
 export interface SpeedZones {
@@ -42,6 +44,7 @@ export interface ActivityItem {
   fastest_100: number;
   fastest_500: number;
   fastest_1000: number;
+  fastest_1852: number;
   total_distance: number;
   speed_zones: SpeedZones
 }

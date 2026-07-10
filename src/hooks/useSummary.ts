@@ -18,10 +18,12 @@ export function useSummary() {
           label: 'Total Distance', 
           value: data.total_distance > 0 ? `${(data.total_distance / 1000).toFixed(1)} km` : '0 km' 
         },
-        { label: 'Top Speed', value: data.top_speed > 0 ? `${msToKnots(data.top_speed).toFixed(1)} kn` : '--' },
-        { label: 'Fastest 100m', value: data.fastest_100 > 0 ? `${data.fastest_100.toFixed(1)} s` : '--' },
-        { label: 'Fastest 500m', value: data.fastest_500 > 0 ? `${data.fastest_500.toFixed(1)} s` : '--' },
-        { label: 'Fastest 1000m', value: data.fastest_1000 > 0 ? `${data.fastest_1000.toFixed(1)} s` : '--' },
+        { label: 'Top Peak Speed', value: data.top_speed > 0 ? `${msToKnots(data.top_speed).toFixed(1)} kn` : '--' },
+        { label: 'Top Speed (5s)', value: data.top_speed_avg_5_s > 0 ? `${msToKnots(data.top_speed_avg_5_s).toFixed(1)} kn` : '--' },
+        { label: 'Top 100m', value: data.fastest_100 > 0 ? `${data.fastest_100.toFixed(1)} s` : '--' },
+        { label: 'Top 500m', value: data.fastest_500 > 0 ? `${data.fastest_500.toFixed(1)} s` : '--' },
+        { label: 'Top 1000m', value: data.fastest_1000 > 0 ? `${data.fastest_1000.toFixed(1)} s` : '--' },
+        { label: 'Top Nautica Mile', value: data.fastest_1852 > 0 ? `${data.fastest_1852.toFixed(1)} s` : '--' },
       ];
     },
   });

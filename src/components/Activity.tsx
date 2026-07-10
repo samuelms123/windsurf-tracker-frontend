@@ -51,9 +51,11 @@ export default function Activity({ activity }: ActivityCardProps) {
             <ActivityItem label="Top Speed" value={activity.maxSpeed} />
             <ActivityItem label="Top Speed (5s)" value={activity.maxSpeed5s} />
             <ActivityItem label="Top Speed (10s)" value={activity.maxSpeed10s} />
-            <ActivityItem label="Fastest 100m" value={activity.fastest100} />
-            <ActivityItem label="Fastest 500m" value={activity.fastest500} />
-            <ActivityItem label="Fastest 1000m" value={activity.fastest1000} />
+            <ActivityItem label="Top 100m" value={activity.fastest100} />
+            <ActivityItem label="Top 500m" value={activity.fastest500} />
+            <ActivityItem label="Top 1000m" value={activity.fastest1000} />
+            <ActivityItem label="Top Nautical Mile" value={activity.fastest1852} />
+            
 
           </div>
         </div>
