@@ -9,7 +9,7 @@ type StatsGridProps = {
 
 function StatsGrid({ stats }: StatsGridProps) {
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-2 gap-4">
       {stats.map((stat) => (
         <article
           key={stat.label}

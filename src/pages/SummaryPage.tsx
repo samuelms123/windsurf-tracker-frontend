@@ -9,8 +9,8 @@ import Loader from '../components/Loader.tsx';
 const loadingStats: SummaryStat[] = [
     { label: 'Session Count', value: '0' },
     { label: 'Time Spent', value: '0h 0m' },
-    { label: 'Time Spent Planing', value: '0h 0m' },
-    { label: 'Total distance travelled', value: '0 km' },
+    { label: 'Time Planed', value: '0h 0m' },
+    { label: 'Total distance', value: '0 km' },
     { label: 'Top Speed', value: '0' },
     { label: 'Fastest 100m', value: '--' },
     { label: 'Fastest 500m', value: '--' },
@@ -34,7 +34,7 @@ function HomePage() {
           />
         }
       />
-      <main className="flex-1 overflow-y-scroll px-6 pb-24 pt-8">
+      <main className="flex-1 overflow-y-scroll px-6 pb-24 pt-4">
         <div className="mx-auto w-full max-w-6xl">
           {isSummaryPending ? <Loader /> : <StatsGrid stats={currentStats} />}
         </div>

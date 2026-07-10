@@ -15,7 +15,7 @@ export default function Activity({ activity }: ActivityCardProps) {
   const generalStats = [
     { label: "Distance", value: activity.distance },
     { label: "Duration", value: activity.duration },
-    { label: "Avg Speed", value: activity.averageSpeed },
+    { label: "Average Speed", value: activity.averageSpeed },
   ];
 
   const speedStats = [

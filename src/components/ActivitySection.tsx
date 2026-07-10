@@ -13,7 +13,7 @@ export default function ActivitySection({
 }: ActivitySectionProps) {
 
   return (
-    <div className="rounded-xl bg-white/[0.02] p-3 border border-white/5">
+    <div className="rounded-xl p-3 border border-white/5">
       <p className={`text-sm font-black uppercase tracking-widest mb-2 border-b border-white/5 pb-1.5 ${titleColorClass}`}>
         {title}
       </p>
