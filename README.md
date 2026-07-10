@@ -21,10 +21,16 @@ Please check out the project repositories here:
 
 ## Screenshots
 
-<div align="center">
-  <img src="./screenshots/home.png" alt="Mobile Screenshot Summary Screen" width="320" style="border-radius: 24px;" >
+<div>
+  <kbd>
+    <img src="./screenshots/home.png" alt="Mobile Screenshot Summary Screen" width="320" />
+  </kbd>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./screenshots/activities.png" alt="Mobile Screenshot Summary Screen" width="320" style="border-radius: 24px" />
+  <kbd>
+    <img src="./screenshots/activities.png" alt="Mobile Screenshot Activities Screen" width="320" />
+  </kbd>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./screenshots/details.png" alt="Mobile Screenshot Summary Screen" width="320" style="border-radius: 24px;" />
+  <kbd>
+    <img src="./screenshots/details.png" alt="Mobile Screenshot Details Screen" width="320" />
+  </kbd>
 </div>
